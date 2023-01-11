@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
 import { nanoid } from "nanoid"
+import Confetti from "react-confetti"
+import sound from "./assets/audio/applause-sound.mp3"
 
 import Dice from "./components/Dice"
 
 
+
 function App() {
   const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || generateRandomDices())
+  const [isGameWon, setIsGameWon] = useState(false)
 
   function newDice(){
     return {id: nanoid(), diceNum: Math.ceil(Math.random() * 6), isKept: false}
@@ -20,12 +24,22 @@ function App() {
   }
 
   useEffect(() => {
+    
     localStorage.setItem("dices", JSON.stringify(dices))
+
+    dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) ? setIsGameWon(true) : setIsGameWon(false)  
+
+
   }, [dices])
 
 
   function rollDices(){
-    setDices(prev => prev.map(dice => dice.isKept ? dice : newDice()))
+    if(isGameWon){
+      setIsGameWon(false)
+      setDices(generateRandomDices())
+    } else {
+      setDices(prev => prev.map(dice => dice.isKept ? dice : newDice()))
+    }
   }
 
   function handleDiceClick(id){
@@ -33,6 +47,10 @@ function App() {
   }
 
   const dicesElements = dices.map(dice => <Dice key={dice.id} handleDiceClick={() => handleDiceClick(dice.id)} {...dice}/>)
+
+  const btnStyle = {
+    backgroundColor: isGameWon ? "#EB3F2D" : "#181717"
+  }
  
 
   return (
@@ -51,11 +69,13 @@ function App() {
           </ul>
         </div>
         <div className="game-container">
+          {isGameWon && <Confetti width={window.innerWidth} height={window.innerHeight}/>}
+          {isGameWon ? <audio src={sound} autoPlay/> : null}
           <div className="dices">
             {dicesElements}
           </div>
           <button
-            className="roll-dices-btn" onClick={rollDices}>Lancer les dés</button>
+            className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{isGameWon ? "Rejouer" : "Lancer les dés"}</button>
         </div>
       </section>
     </main>
