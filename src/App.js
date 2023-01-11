@@ -5,7 +5,11 @@ import Dice from "./components/Dice"
 
 
 function App() {
-  const [dices, setDices] = useState(generateRandomDices())
+  const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || generateRandomDices())
+
+  function newDice(){
+    return {id: nanoid(), diceNum: Math.ceil(Math.random() * 6), isKept: false}
+  }
 
   function generateRandomDices(){
     const arrayOfDices = []
@@ -15,13 +19,9 @@ function App() {
       return arrayOfDices
   }
 
-  function newDice(){
-    return {id: nanoid(), diceNum: Math.ceil(Math.random() * 6), isKept: false}
-  }
-  
-  // useEffect(() => {
-  //   console.log(dices)
-  // }, [dices])
+  useEffect(() => {
+    localStorage.setItem("dices", JSON.stringify(dices))
+  }, [dices])
 
 
   function rollDices(){

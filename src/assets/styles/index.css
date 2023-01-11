@@ -19,6 +19,16 @@ h1 {
   text-transform: uppercase;
 }
 
+::selection {
+  color: none;
+  background: none;
+}
+
+::-moz-selection {
+  color: none;
+  background: none;
+}
+
 .container {
   width: 100%;
   margin: auto;
