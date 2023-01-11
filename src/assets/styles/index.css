@@ -76,7 +76,6 @@ section {
 }
 
 .dice {
-  background-color: rgb(211, 244, 112);
   margin: 0 auto;
   height: 60px;
   width: 60px;
@@ -101,6 +100,12 @@ section {
   border: none;
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
+  transition: 0.2s all;
+}
+
+.roll-dices-btn:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 

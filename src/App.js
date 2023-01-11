@@ -19,17 +19,22 @@ function App() {
     return {id: nanoid(), diceNum: Math.ceil(Math.random() * 6), isKept: false}
   }
   
-  useEffect(() => {
-    console.log(dices)
-  }, [dices])
+  // useEffect(() => {
+  //   console.log(dices)
+  // }, [dices])
 
 
-  function rollDices(e){
-    e.preventDefault()
+  function rollDices(){
     setDices(generateRandomDices())
   }
 
-  const dicesElements = dices.map(dice => <Dice key={dice.id} diceNum={dice.diceNum}/>)
+  function handleDiceClick(id){
+    setDices(prev => prev.map(dice => {
+      return dice.id === id ? {...dice, isKept: !dice.isKept} : dice
+    }))
+  }
+
+  const dicesElements = dices.map(dice => <Dice key={dice.id} handleDiceClick={() => handleDiceClick(dice.id)} {...dice}/>)
  
 
   return (
