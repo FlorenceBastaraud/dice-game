@@ -61,4 +61,46 @@ section {
   border: 2px solid #333;
   background-color: #fff;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.dices {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 40px;
+  column-gap: 10px;
+}
+
+.dice {
+  background-color: rgb(211, 244, 112);
+  margin: 0 auto;
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dice-num {
+  font-size: 2rem;
+}
+
+.roll-dices-btn {
+  margin-top: 50px;
+  background-color: rgb(24, 23, 23);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+}
+
+

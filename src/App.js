@@ -18,6 +18,39 @@ function App() {
           </ul>
         </div>
         <div className="game-container">
+          <div className="dices">
+            <div className="dice">
+              <h2 className="dice-num">1</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">2</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">3</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">4</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">5</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">2</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">3</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">4</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">5</h2>
+            </div>
+            <div className="dice">
+              <h2 className="dice-num">6</h2>
+            </div>
+          </div>
+          <button className="roll-dices-btn">Lancer les dés</button>
         </div>
       </section>
     </main>
