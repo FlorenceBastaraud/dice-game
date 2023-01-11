@@ -25,13 +25,11 @@ function App() {
 
 
   function rollDices(){
-    setDices(generateRandomDices())
+    setDices(prev => prev.map(dice => dice.isKept ? dice : newDice()))
   }
 
   function handleDiceClick(id){
-    setDices(prev => prev.map(dice => {
-      return dice.id === id ? {...dice, isKept: !dice.isKept} : dice
-    }))
+    setDices(prev => prev.map(dice => dice.id === id ? {...dice, isKept: !dice.isKept} : dice))
   }
 
   const dicesElements = dices.map(dice => <Dice key={dice.id} handleDiceClick={() => handleDiceClick(dice.id)} {...dice}/>)
