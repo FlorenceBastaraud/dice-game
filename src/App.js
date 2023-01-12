@@ -9,6 +9,7 @@ import Dice from "./components/Dice"
 
 function App() {
   const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || generateRandomDices())
+  const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 1)
   const [isGameWon, setIsGameWon] = useState(false)
 
   function newDice(){
@@ -26,16 +27,20 @@ function App() {
   useEffect(() => {
     
     localStorage.setItem("dices", JSON.stringify(dices))
+    localStorage.setItem("rollsCounter", JSON.stringify(rollsCounter))
 
     dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) ? setIsGameWon(true) : setIsGameWon(false)  
 
 
-  }, [dices])
+  }, [dices, rollsCounter])
 
 
   function rollDices(){
+    setRollsCounter(prev => prev + 1)
+
     if(isGameWon){
       setIsGameWon(false)
+      setRollsCounter(1)
       setDices(generateRandomDices())
     } else {
       setDices(prev => prev.map(dice => dice.isKept ? dice : newDice()))
@@ -78,6 +83,10 @@ function App() {
           </div>
           <button
             className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{isGameWon ? "Rejouer" : "Lancer les dés"}</button>
+          <div className="game-stats">
+            <span className="rolls-counter">Tour: {rollsCounter}</span>
+            <span className="timer"></span>
+          </div>
         </div>
       </section>
     </main>
