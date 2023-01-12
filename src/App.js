@@ -49,7 +49,9 @@ function App() {
   const dicesElements = dices.map(dice => <Dice key={dice.id} handleDiceClick={() => handleDiceClick(dice.id)} {...dice}/>)
 
   const btnStyle = {
-    backgroundColor: isGameWon ? "#EB3F2D" : "#181717"
+    backgroundColor: isGameWon ? "#EB3F2D" : "#e5e42a",
+    color: isGameWon ? "#fff" : "#000",
+
   }
  
 
