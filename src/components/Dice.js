@@ -14,10 +14,13 @@ export default function Dice({diceNum, handleDiceClick, isKept}){
   const style = { backgroundColor: isKept ? "#fff" : "#000" }
   const styleDice = { color: isKept ? "#181717" : "#e2eadf" }
 
+
+  const diceElement = <i style={styleDice} className={`dice-num fa-solid fa-dice-${classIcon}`}></i>
+
   return (
 
     <div className="dice" style={style} onClick={handleDiceClick}>
-      <i style={styleDice} className={`dice-num fa-solid fa-dice-${classIcon}`}></i>
+      {diceElement}
     </div>
 
   )
