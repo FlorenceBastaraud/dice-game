@@ -9,9 +9,10 @@ import Dice from "./components/Dice"
 
 function App() {
   const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || blankDices())
-  const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 0)
-  const [timer, setTimer] = useState(stopwatch())
   const [isGameWon, setIsGameWon] = useState(false)
+  const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 0)
+  const [score, setScore] = useState(JSON.parse(localStorage.getItem("score")) || 40)
+  const [isScoreBeaten, setIsScoreBeaten] = useState({isBeaten: false, oldScore: score})
 
   function blankDices(n = 10, arr = []){
     if(n <= 0) return arr
@@ -30,25 +31,31 @@ function App() {
       return arrayOfDices
   }
 
+
   useEffect(() => {
-    
+   
     localStorage.setItem("dices", JSON.stringify(dices))
     localStorage.setItem("rollsCounter", JSON.stringify(rollsCounter))
+  
 
-    dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) && dices.every(dice => dice.diceNum !== 0) ? setIsGameWon(true) : setIsGameWon(false)  
+    if(dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) && dices.every(dice => dice.diceNum !== 0)){
+      setIsGameWon(true)
+      if(rollsCounter < score){
+        setIsScoreBeaten({isBeaten: true, oldScore: score})
+        localStorage.setItem('score', JSON.stringify(rollsCounter))
+        setScore(rollsCounter)
+      }
+    } else {
+      setIsGameWon(false)
+    }  
 
+    console.log(isScoreBeaten)
 
-  }, [dices, rollsCounter])
-
-
-  function stopwatch(){
-
-  }
+  }, [dices, rollsCounter, isGameWon, score, isScoreBeaten])
 
 
   function rollDices(e){
     if(rollsCounter === 0){
-      console.log("start timer")
       setDices(generateRandomDices())
     }
 
@@ -76,7 +83,6 @@ function App() {
     color: isGameWon ? "#fff" : "#000",
 
   }
- 
 
   return (
     <main className="container">
@@ -96,14 +102,20 @@ function App() {
         <div className="game-container">
           {isGameWon && <Confetti width={window.innerWidth} height={window.innerHeight}/>}
           {isGameWon ? <audio src={sound} autoPlay/> : null}
-          <div className="dices">
-            {dicesElements}
+          <div className="game-side">
+            <div className="dices">
+              {dicesElements}
+            </div>
+            <button
+              className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{rollsCounter === 0 ? "Lancer les dés" : isGameWon ? "Rejouer" : "Relancer les dés"}</button>
           </div>
-          <button
-            className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{rollsCounter === 0 ? "Lancer les dés" : isGameWon ? "Rejouer" : "Relancer les dés"}</button>
-          <div className="game-stats">
-            {rollsCounter !== 0 && <span className="rolls-counter">Lancer <span className="rolls-counter-number">n° {rollsCounter}</span></span>}
-            <span className="timer"></span>
+          <div className="stats-side">
+            <div className="game-stats">
+              {score && <span className="score"><span className="sub">Meilleur score:</span><br/> <span className="score-text">{isScoreBeaten.isBeaten ? <span class="old-score">{isScoreBeaten.oldScore + " Lancers"}<br/>{score + " Lancers"}</span> : score + " Lancers"}</span></span>}
+              <span className="rolls-counter"><span className="sub">Partie en cours</span><br/>
+              {rollsCounter === 0 ? <span className="rolls-counter-number"> {rollsCounter} lancers</span> : <span className="rolls-counter-number">{rollsCounter} lancer{rollsCounter > 1 && "s"}</span>}</span>
+              {isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu votre record!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : <span className="message">Oyez Oyez!<br/>Challenge: battre le meilleur score!</span>}
+            </div>
           </div>
         </div>
       </section>
