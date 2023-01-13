@@ -8,9 +8,15 @@ import Dice from "./components/Dice"
 
 
 function App() {
-  const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || generateRandomDices())
-  const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 1)
+  const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || blankDices())
+  const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 0)
+  const [timer, setTimer] = useState(stopwatch())
   const [isGameWon, setIsGameWon] = useState(false)
+
+  function blankDices(n = 10, arr = []){
+    if(n <= 0) return arr
+    return blankDices(n-1, [...arr, {id: nanoid(), diceNum: 0, isKept: true}])
+  }
 
   function newDice(){
     return {id: nanoid(), diceNum: Math.ceil(Math.random() * 6), isKept: false}
@@ -29,22 +35,34 @@ function App() {
     localStorage.setItem("dices", JSON.stringify(dices))
     localStorage.setItem("rollsCounter", JSON.stringify(rollsCounter))
 
-    dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) ? setIsGameWon(true) : setIsGameWon(false)  
+    dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) && dices.every(dice => dice.diceNum !== 0) ? setIsGameWon(true) : setIsGameWon(false)  
 
 
   }, [dices, rollsCounter])
 
 
-  function rollDices(){
+  function stopwatch(){
+
+  }
+
+
+  function rollDices(e){
+    if(rollsCounter === 0){
+      console.log("start timer")
+      setDices(generateRandomDices())
+    }
+
     setRollsCounter(prev => prev + 1)
 
     if(isGameWon){
       setIsGameWon(false)
-      setRollsCounter(1)
-      setDices(generateRandomDices())
+      setRollsCounter(0)
+      setDices(blankDices())
+      return
     } else {
       setDices(prev => prev.map(dice => dice.isKept ? dice : newDice()))
     }
+
   }
 
   function handleDiceClick(id){
@@ -82,9 +100,9 @@ function App() {
             {dicesElements}
           </div>
           <button
-            className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{isGameWon ? "Rejouer" : "Lancer les dés"}</button>
+            className="roll-dices-btn" style={btnStyle} onClick={rollDices}>{rollsCounter === 0 ? "Lancer les dés" : isGameWon ? "Rejouer" : "Relancer les dés"}</button>
           <div className="game-stats">
-            <span className="rolls-counter">Tour: {rollsCounter}</span>
+            {rollsCounter !== 0 && <span className="rolls-counter">Lancer <span className="rolls-counter-number">n° {rollsCounter}</span></span>}
             <span className="timer"></span>
           </div>
         </div>

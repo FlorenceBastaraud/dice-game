@@ -1,6 +1,6 @@
 
 export default function Dice({diceNum, handleDiceClick, isKept}){
-  const dicesClassIcons = { 1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
+  const dicesClassIcons = { 0: "d6", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
   const dicesInteger = Object.keys(dicesClassIcons).map(num => parseInt(num))
   let classIcon = []
   
