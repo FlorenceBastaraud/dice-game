@@ -11,7 +11,7 @@ function App() {
   const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || blankDices())
   const [isGameWon, setIsGameWon] = useState(false)
   const [rollsCounter, setRollsCounter] = useState(JSON.parse(localStorage.getItem("rollsCounter")) || 0)
-  const [score, setScore] = useState(JSON.parse(localStorage.getItem("score")) || 40)
+  const [score, setScore] = useState(JSON.parse(localStorage.getItem("score")) || 30)
   const [isScoreBeaten, setIsScoreBeaten] = useState({isBeaten: false, oldScore: score})
 
   function blankDices(n = 10, arr = []){
@@ -49,14 +49,13 @@ function App() {
       setIsGameWon(false)
     }  
 
-    console.log(isScoreBeaten)
-
   }, [dices, rollsCounter, isGameWon, score, isScoreBeaten])
 
 
   function rollDices(e){
     if(rollsCounter === 0){
       setDices(generateRandomDices())
+      setIsScoreBeaten(prev => ({isBeaten: false, oldScore: score}))
     }
 
     setRollsCounter(prev => prev + 1)
@@ -92,7 +91,7 @@ function App() {
           <h2>Règles du jeu</h2>
           <ul>
             <li>Le but du jeu est de faire en sorte que vos 10 dés affichent le même nombre de poins &#40;réprésentant un chiffre &#94;&#94;&#41;.</li>
-            <li>Lancez les dés une 1ère fois et choississez le chiffre qui apparait le plus.</li>
+            <li>Lancez les dés une 1ère fois et choississez mentalement le chiffre qui apparait le plus.</li>
             <li>Appuyez sur les dés qui ont le chiffre que vous venez de choisir.</li>
             <li>Une fois fait, relancez les dés pour générer d'autres chiffres pour les autres dés non séléctionnés dans l'espoir de tomber sur votre chiffre prélectionné.</li>
             <li>Si votre chiffre apparait sur un ou plusieurs des dés après le lancer, appuyez sur ces dés-là et relancez les dés.</li>
@@ -111,10 +110,19 @@ function App() {
           </div>
           <div className="stats-side">
             <div className="game-stats">
-              {score && <span className="score"><span className="sub">Meilleur score:</span><br/> <span className="score-text">{isScoreBeaten.isBeaten ? <span class="old-score">{isScoreBeaten.oldScore + " Lancers"}<br/>{score + " Lancers"}</span> : score + " Lancers"}</span></span>}
+              <span className="score">
+                <span className="sub">Meilleur score:</span>
+                <br/>
+                  <span className="score-text">
+                    {isScoreBeaten.isBeaten && <span className="old-score">{isScoreBeaten.oldScore} Lancers<br/></span>}
+                    {(JSON.parse(localStorage.getItem("score")) === undefined || JSON.parse(localStorage.getItem("score")) === null) ? <span className="first-game">À vous de jouer!</span> : <span>{score} Lancers</span>}
+                                     
+                  </span>
+              </span>
               <span className="rolls-counter"><span className="sub">Partie en cours</span><br/>
               {rollsCounter === 0 ? <span className="rolls-counter-number"> {rollsCounter} lancers</span> : <span className="rolls-counter-number">{rollsCounter} lancer{rollsCounter > 1 && "s"}</span>}</span>
-              {isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu votre record!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : <span className="message">Oyez Oyez!<br/>Challenge: battre le meilleur score!</span>}
+              {(JSON.parse(localStorage.getItem("score")) === null || JSON.parse(localStorage.getItem('score')) === undefined) ? <span className="message">Tiens donc, vous êtes nouveau ici : Allez-vous battre le record des 30 lancers ?</span> : isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu le meilleur score!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : <span className="message">Oyez Oyez!<br/>Challenge: Battre le meilleur score!</span>}
+              {(isGameWon && isScoreBeaten.isBeaten) && <i class="fa-solid fa-medal"></i>}
             </div>
           </div>
         </div>

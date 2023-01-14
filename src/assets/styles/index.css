@@ -158,6 +158,10 @@ section {
   text-transform: uppercase;
 }
 
+.first-game {
+  text-transform: none;
+}
+
 .score {
   background: rgb(79, 78, 78);
   color: #fff;
