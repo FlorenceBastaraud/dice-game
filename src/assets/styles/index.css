@@ -11,6 +11,7 @@ body {
   height: 100vh;
   border: 20px solid #000;
   background-color: rgb(234, 242, 234);
+  overflow-x: hidden;
 }
 
 h1 {
@@ -71,10 +72,6 @@ section {
   border: 2px solid #333;
   background-color: #fff;
   padding: 5px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center; */
   display: grid;
   grid-template-columns: 80% 1fr;
 }
@@ -167,6 +164,10 @@ section {
   color: #fff;
 }
 
+.rolls-counter {
+  background-color: rgb(236, 232, 232);
+}
+
 .old-score {
   text-decoration: line-through;
 }
@@ -177,4 +178,345 @@ section {
 }
 
 
+@media all and (max-width: 1400px){
+    
+  body {
+    border: 6px solid #000;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 2.3rem;
+  }
+
+  .rules {
+    background-color: rgb(210, 226, 232);
+    padding: 5px 10px;
+  }
+
+  .rules h2 {
+    text-align: center;
+  }
+
+  .rules ul {
+    margin-top: 20px;
+    list-style-position: inside;
+  }
+
+  .rules ul li {
+    margin-bottom: 10px;
+  }
+
+  .game-container {
+    grid-template-columns: 78% 1fr;
+  }
+
+}
+
+ 
+@media all and (max-width: 1250px){
+
+  body {
+    border: 3px solid #000;
+  }
+
+  .container {
+    padding: 5px 12px;
+  }
+
+  .title {
+    font-size: 2.1;
+  }
+  
+  section {
+    margin-top: 25px;
+  }
+ 
+  .game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .game-side {
+    justify-content: space-evenly;
+  }
+
+  .stats-side {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .game-stats {
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+  }
+
+  .rolls-counter, .score {
+    padding: 3px;
+    border-radius: 2px;
+  }
+
+  .sub {
+    text-decoration: none;
+    text-transform: none;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .rolls-counter-number, .score-text {
+    text-transform: lowercase;
+  }
+
+  .score, .rolls-counter {
+    min-width: 150px;
+  }
+
+  .message {
+    max-width: 400px;
+  }
+}
+
+
+@media all and (max-width: 1150px){
+
+  body {
+    height: 100%;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  section {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 20px;
+  }
+ 
+  .game-container {
+    padding: 30px 20px;
+    grid-template-columns: 70% 1fr;
+  }
+
+  .stats-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .game-stats {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .message {
+    max-width: 250px;
+  }
+}
+
+
+
+@media all and (max-width: 910px){
+ 
+  .game-container {
+    padding: 30px 20px;
+    grid-template-columns: 75% 1fr;
+  }
+
+}
+
+
+@media all and (max-width: 870px){
+
+  .game-container {
+    padding: 20px 10px;
+    grid-template-columns: 1fr;
+  }
+
+  .stats-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .game-stats {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .message {
+    max-width: 280px;
+  }
+}
+
+
+
+@media all and (max-width: 740px){
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .message {
+    max-width: 200px;
+  }
+}
+
+
+
+@media all and (max-width: 660px){
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .rules h2 {
+    font-size: 1.4rem;
+  }
+
+  .stats-side span {
+    margin-bottom: 10px;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .message {
+    max-width: 280px;
+  }
+}
+
+
+@media all and (max-width: 630px){
+
+  .title {
+    font-size: 1.250rem;
+  }
+
+  .rules h2 {
+    font-size: 1.2rem;
+  }
+
+  .rules ul {
+    margin-top: 5px;
+    padding: 20px;
+  }
+
+  .rules {
+    font-size: 0.9rem;
+  }
+    
+  .dices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+    column-gap: 30px;
+  }
+
+  .dice:last-child {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 4;
+  }
+
+}
+
+
+
+
+@media all and (max-width: 450px){
+
+  .title {
+    letter-spacing: 0.2rem;
+  }
+
+  .rules h2 {
+    font-size: 1.1rem;
+  }
+
+}
+
+
+@media all and (max-width: 385px){
+
+  .title {
+    letter-spacing: 0.1rem;
+  }
+
+  .dices {
+    column-gap: 25px;
+  }
+
+  .dice {
+    height: 45px;
+    width: 45px;
+  }
+
+  .dice i {
+    font-size: 3.3175rem;
+  }
+
+  .roll-dices-btn {
+    margin-top: 25px;
+    padding: 8px 25px;
+    font-size: 1rem;
+  }
+
+  .game-stats {
+    font-size: 0.9rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+}
+
+
+@media all and (max-width: 350px){
+
+  .title {
+    letter-spacing: normal;
+  }
+
+  .rules h2 {
+    font-size: 1rem;
+  }
+
+}
+
+
+@media all and (max-width: 313px){
+
+  .title {
+    letter-spacing: 0.8;
+    font-size: 1rem;
+  }
+
+  .rules ul {
+    margin-top: 0;
+  }
+
+  .rules h2 {
+    font-size: 0.975rem;
+  }
+
+}
 

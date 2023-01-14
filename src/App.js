@@ -127,7 +127,6 @@ function App() {
               {rollsCounter === 0 ? <span className="rolls-counter-number"> {rollsCounter} lancers</span> : <span className="rolls-counter-number">{rollsCounter} lancer{rollsCounter > 1 && "s"}</span>}</span>
               {((JSON.parse(localStorage.getItem("score")) === null || JSON.parse(localStorage.getItem('score')) === undefined) && !isGameWon) && <span className="message">Tiens donc, vous êtes nouveau ici : Allez-vous battre le record des {score} lancers ?</span>}
               {isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu le meilleur score!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : (JSON.parse(localStorage.getItem('score')) !== null && JSON.parse(localStorage.getItem('score')) !== undefined) ? <span className="message">Oyez Oyez!<br/>Challenge: Battre le meilleur score.</span> : ""}
-              {(isGameWon && isScoreBeaten.isBeaten) && <i class="fa-solid fa-medal"></i>}
             </div>
           </div>
         </div>
