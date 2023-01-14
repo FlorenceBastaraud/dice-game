@@ -94,7 +94,7 @@ function App() {
         <div className="rules">
           <h2>Règles du jeu</h2>
           <ul>
-            <li>Le but du jeu est de faire en sorte que vos 10 dés affichent le même nombre de poins &#40;réprésentant un chiffre &#94;&#94;&#41;.</li>
+            <li>Le but du jeu est de faire en sorte que vos 10 dés affichent le même nombre de points &#40;réprésentant un chiffre &#94;&#94;&#41;.</li>
             <li>Lancez les dés une 1ère fois et choississez mentalement le chiffre qui apparait le plus.</li>
             <li>Appuyez sur les dés qui ont le chiffre que vous venez de choisir.</li>
             <li>Une fois fait, relancez les dés pour générer d'autres chiffres pour les autres dés non séléctionnés dans l'espoir de tomber sur votre chiffre prélectionné.</li>
