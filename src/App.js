@@ -39,12 +39,16 @@ function App() {
   
 
     if(dices.every(dice => dice.isKept) && dices.every(dice => dice.diceNum === dices[0].diceNum) && dices.every(dice => dice.diceNum !== 0)){
-      setIsGameWon(true)
+
       if(rollsCounter < score){
+        setIsGameWon(true)
         setIsScoreBeaten({isBeaten: true, oldScore: score})
         localStorage.setItem('score', JSON.stringify(rollsCounter))
         setScore(rollsCounter)
+      } else {
+        setIsGameWon(true)
       }
+
     } else {
       setIsGameWon(false)
     }  
@@ -114,14 +118,15 @@ function App() {
                 <span className="sub">Meilleur score:</span>
                 <br/>
                   <span className="score-text">
-                    {isScoreBeaten.isBeaten && <span className="old-score">{isScoreBeaten.oldScore} Lancers<br/></span>}
+                    {(isScoreBeaten.isBeaten && isGameWon) && <span className="old-score">{isScoreBeaten.oldScore} Lancers<br/></span>}
                     {(JSON.parse(localStorage.getItem("score")) === undefined || JSON.parse(localStorage.getItem("score")) === null) ? <span className="first-game">À vous de jouer!</span> : <span>{score} Lancers</span>}
                                      
                   </span>
               </span>
               <span className="rolls-counter"><span className="sub">Partie en cours</span><br/>
               {rollsCounter === 0 ? <span className="rolls-counter-number"> {rollsCounter} lancers</span> : <span className="rolls-counter-number">{rollsCounter} lancer{rollsCounter > 1 && "s"}</span>}</span>
-              {(JSON.parse(localStorage.getItem("score")) === null || JSON.parse(localStorage.getItem('score')) === undefined) ? <span className="message">Tiens donc, vous êtes nouveau ici : Allez-vous battre le record des 30 lancers ?</span> : isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu le meilleur score!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : <span className="message">Oyez Oyez!<br/>Challenge: Battre le meilleur score!</span>}
+              {((JSON.parse(localStorage.getItem("score")) === null || JSON.parse(localStorage.getItem('score')) === undefined) && !isGameWon) && <span className="message">Tiens donc, vous êtes nouveau ici : Allez-vous battre le record des {score} lancers ?</span>}
+              {isGameWon ? <span className="message">{(isScoreBeaten.isBeaten) ? "Bravo, vous avez battu le meilleur score!" : "Mince, le record reste inchangé. Belle partie tout de même!"}</span> : (JSON.parse(localStorage.getItem('score')) !== null && JSON.parse(localStorage.getItem('score')) !== undefined) ? <span className="message">Oyez Oyez!<br/>Challenge: Battre le meilleur score.</span> : ""}
               {(isGameWon && isScoreBeaten.isBeaten) && <i class="fa-solid fa-medal"></i>}
             </div>
           </div>
