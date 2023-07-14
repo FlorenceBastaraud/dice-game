@@ -12,4 +12,4 @@ You win the game by getting all 10 dices to show the same number. Have fun!
 ##### Nested Layout System with Flexbox and Grid
 ##### & more !
 
-[view site / voir site](https://florencebastaraud.github.io/dice-game/){:target="_blank" rel="noopener"}
+[view site / voir site](https://florencebastaraud.github.io/dice-game/)
