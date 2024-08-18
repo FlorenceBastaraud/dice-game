@@ -7,7 +7,6 @@ import Dice from "./components/Dice"
 import Footer from "./components/Footer"
 
 
-
 function App() {
   const [dices, setDices] = useState(JSON.parse(localStorage.getItem('dices')) || blankDices())
   const [isGameWon, setIsGameWon] = useState(false)
