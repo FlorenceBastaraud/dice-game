@@ -8,10 +8,11 @@
 body {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   border: 20px solid #000;
   background-color: rgb(234, 242, 234);
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
 }
 
 h1 {
@@ -177,6 +178,13 @@ section {
   font-size: 1rem;
 }
 
+footer div a {
+  color: #000;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 @media all and (max-width: 1400px){
     

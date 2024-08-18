@@ -4,6 +4,7 @@ import Confetti from "react-confetti"
 import sound from "./assets/audio/applause-sound.mp3"
 
 import Dice from "./components/Dice"
+import Footer from "./components/Footer"
 
 
 
@@ -131,6 +132,7 @@ function App() {
           </div>
         </div>
       </section>
+      <Footer/>
     </main>
   );
 }
