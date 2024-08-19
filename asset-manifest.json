@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/dice-game/static/css/main.910e1c3a.css",
-    "main.js": "/dice-game/static/js/main.01e3be56.js",
+    "main.css": "/dice-game/static/css/main.a2434d16.css",
+    "main.js": "/dice-game/static/js/main.ecda31f5.js",
     "static/media/applause-sound.mp3": "/dice-game/static/media/applause-sound.381fc2db1ec68ebbb30f.mp3",
     "index.html": "/dice-game/index.html",
-    "main.910e1c3a.css.map": "/dice-game/static/css/main.910e1c3a.css.map",
-    "main.01e3be56.js.map": "/dice-game/static/js/main.01e3be56.js.map"
+    "main.a2434d16.css.map": "/dice-game/static/css/main.a2434d16.css.map",
+    "main.ecda31f5.js.map": "/dice-game/static/js/main.ecda31f5.js.map"
   },
   "entrypoints": [
-    "static/css/main.910e1c3a.css",
-    "static/js/main.01e3be56.js"
+    "static/css/main.a2434d16.css",
+    "static/js/main.ecda31f5.js"
   ]
 }
