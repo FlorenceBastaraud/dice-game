@@ -1,6 +1,6 @@
 {
-  "homepage": "https://florencebastaraud.github.io/dice-game/",
-  "name": "dice-game",
+  "homepage": "https://florencebastaraud.github.io/dicefall/",
+  "name": "dicefall",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

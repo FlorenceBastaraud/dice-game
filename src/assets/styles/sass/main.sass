@@ -47,6 +47,9 @@ body
       gap: 70px
       padding: toEm(25) 0
 
+    @include media-query(580px)
+      gap: 30px
+
 
     &__background
       position: absolute
@@ -335,10 +338,17 @@ body
         @include displayFlex(row, center, flex-start)
         gap: 40px
 
+      @include media-query(570px)
+        @include displayFlex(column, center, center)
+        gap: 10px
+
       .sub
         font-style: italic
         line-height: toRem(30)
         font-weight: 700
+
+        @include media-query(1080px)
+          white-space: nowrap
 
       .message
         font-style: italic

@@ -93,6 +93,11 @@ body {
     padding: 1.5625em 0;
   }
 }
+@media (max-width: 580px) {
+  #root .home {
+    gap: 30px;
+  }
+}
 #root .home__background {
   position: absolute;
   width: 100%;
@@ -413,10 +418,24 @@ body {
     gap: 40px;
   }
 }
+@media (max-width: 570px) {
+  #root .home__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
 #root .home__stats .sub {
   font-style: italic;
   line-height: 1.875rem;
   font-weight: 700;
+}
+@media (max-width: 1080px) {
+  #root .home__stats .sub {
+    white-space: nowrap;
+  }
 }
 #root .home__stats .message {
   font-style: italic;
