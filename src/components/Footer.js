@@ -1,13 +1,10 @@
 function Footer(){
   
   return (
-      <footer>
-        <div>
-          <a href="https://florence-b.com" target="_blank" rel="noreferrer">
-            <small>2023 &copy; Florence Bastaraud</small>
-          </a>
-        </div>
-    </footer>
+      <footer className="home__footer">
+        <span>2023 &copy; </span>
+        <a className="home__footer--link" href="https://florence-b.com" target="_blank" rel="noreferrer" aria-label="Visit Florence Bastaraud website"> Florence Bastaraud</a>
+      </footer>
   )
 }
 

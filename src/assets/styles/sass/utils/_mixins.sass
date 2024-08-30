@@ -1,0 +1,22 @@
+@mixin displayFlex($flexDirection, $justifyContent, $alignItems)
+  display: flex
+  flex-direction: $flexDirection
+  justify-content: $justifyContent
+  align-items: $alignItems
+  
+
+@mixin media-query($size, $isMax: true) 
+  @if $isMax
+    @media (max-width: $size)
+      @content
+  @else
+    @media (min-width: $size)
+      @content
+
+
+@mixin animation($animationString)
+  -webkit-animation: #{$animationString}
+  -moz-animation: #{$animationString}
+  -ms-animation: #{$animationString}
+  -o-animation: #{$animationString}
+  animation: #{$animationString}

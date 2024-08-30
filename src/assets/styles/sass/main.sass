@@ -1,0 +1,348 @@
+@import './utils/mixins'
+@import './utils/functions'
+@import './utils/transforms'
+@import './utils/keyframes'
+  
+  
+  
+*, *::before, *::after
+  margin: 0
+  padding: 0
+  box-sizing: inherit
+
+::selection
+  background-color: #63ebfd
+  color: #000
+
+html
+  box-sizing: border-box
+  height: 100%
+  width: 100%
+
+body
+  height: 100%
+  width: 100%
+  font-family: sans-serif
+  // background-color: #f5f1f1
+  background-color: #0e0e0e
+
+#root
+  height: 100%
+  width: 100%
+  
+  .home
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 40px
+    position: relative
+    overflow-x: hidden
+    width: 100%
+    max-width: 1650px
+    margin: 0 auto
+
+    @include media-query(855px)
+      gap: 70px
+      padding: toEm(25) 0
+
+
+    &__background
+      position: absolute
+      width: 100%
+      height: 100%
+      overflow: hidden
+
+      &--particle
+        position: absolute
+        background-color: rgba(255, 255, 255, 0.1)
+        border-radius: 50%
+        @include animation(move 10s linear infinite)
+
+        &:nth-child(1)     
+          width: 10px
+          height: 10px
+          top: 10%
+          left: 20%
+          animation-duration: 15s
+
+        &:nth-child(2)
+          width: 15px
+          height: 15px
+          top: 30%
+          left: 40%
+          animation-duration: 20s
+
+        &:nth-child(3)
+          width: 8px
+          height: 8px
+          top: 50%
+          left: 60%
+          animation-duration: 12s
+
+        &:nth-child(4)
+          width: 12px
+          height: 12px
+          top: 70%
+          left: 80%
+          animation-duration: 18s
+
+        &:nth-child(5)
+          width: 14px
+          height: 14px
+          top: 20%
+          left: 80%
+          animation-duration: 22s
+
+        &:nth-child(6)
+          width: 9px
+          height: 9px
+          top: 80%
+          left: 30%
+          animation-duration: 17s
+        
+
+    &__title
+      position: absolute
+      top: 40px
+      left: 50%
+      transform: translateX(-50%)
+      font-size: toRem(55)
+      color: #FFF
+      font-style: italic
+      letter-spacing: toEm(-1)
+      font-family: "Baskervville SC", serif
+      font-weight: 400
+
+      @include media-query(855px)
+        font-size: toRem(48)
+
+    &__dices
+      padding: 0 toEm(40)
+      display: grid
+      grid-template-columns: repeat(5, 1fr)
+      gap: 55px
+
+      @include media-query(855px)
+        @include displayFlex(row, center, center)
+        flex-wrap: wrap
+        gap: 35px
+
+      &--item
+        width: 90px
+        height: 90px
+        position: relative
+        perspective: 600px
+        transform-style: preserve-3d
+        cursor: pointer
+        transition: transform .1s ease-in-out
+        transform-origin: center center
+
+        &.rolling
+          animation: shake .1s ease-in-out
+
+        &.selected
+          .face
+            @include animation(background-expand .25s forwards)
+            color: #222
+
+        .face
+          width: 100%
+          height: 100%
+          background-color: white
+          border: 2px solid black
+          border-radius: 10px
+          @include displayFlex(row, center, center)
+          gap: toRem(10)
+          padding: toEm(10)
+          font-size: toRem(24)
+          font-weight: 700
+          backface-visibility: hidden
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2)
+          transform: translateZ(30px)
+
+          &.face-3
+            flex-direction: column
+
+            span
+              &:nth-child(1)
+                align-self: flex-start
+
+              &:nth-child(2)
+                align-self: center
+
+              &:nth-child(3)
+                align-self: flex-end
+
+          &.face-4
+            display: grid
+            grid-template-columns: repeat(2, auto)
+
+          &.face-5
+            gap: 35px
+            display: grid
+            grid-template-columns: repeat(2, auto)
+            position: relative
+
+            span
+              &:nth-child(3)
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+
+          &.face-6
+            gap: toRem(10) toRem(20)
+            display: grid
+            grid-template-columns: repeat(2, auto)
+          
+          span
+            width: 8px
+            height: 8px
+            border-radius: 50%
+            background-color: #000
+
+
+
+    &__roll-dices
+      position: relative
+      bottom: -40px
+      align-items: center
+      appearance: none
+      background-color: #fff
+      border-radius: 24px
+      border-style: none
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0
+      box-sizing: border-box
+      color: #000
+      cursor: pointer
+      display: inline-flex
+      fill: currentcolor
+      font-family: Roboto,Arial,sans-serif
+      font-size: toRem(14)
+      font-weight: 500
+      justify-content: center
+      letter-spacing: .25px
+      line-height: normaml
+      max-width: 100%
+      overflow: visible
+      padding: toEm(13) toEm(25)
+      text-align: center
+      text-transform: none
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms
+      user-select: none
+      font-style: italic
+      letter-spacing: toEm(2)
+      -webkit-user-select: none
+      touch-action: manipulation
+      width: auto
+      will-change: transform,opacity
+      z-index: 0
+
+      &.start
+        background-color: #63ebfd
+
+      &:hover
+        color: #3c4043
+        background-color: #fff
+        scale: 1.025
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 1px 3px rgba(255, 255, 255, 0.5)
+
+      &:active
+        background: linear-gradient(to bottom, #d0d0d0 0%, #b0b0b0 100%)
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 3px rgba(255, 255, 255, 0.2)
+        transform: translateY(2px)
+
+
+    &__footer
+      position: absolute
+      bottom: 10px
+      left: 50%
+      transform: translateX(-50%)
+      font-size: toRem(12)
+      color: #fff
+
+      &--link
+        color: inherit
+        text-decoration: none
+        transition: .3s ease-in-out
+
+        &:hover
+          text-decoration: underline
+
+    &__title, &__footer, &__roll-dices
+      @include media-query(1080px)
+        position: relative
+        left: auto
+        bottom: auto
+        top: auto
+        transform: unset
+        @include displayFlex(row, center, center)
+
+
+    &__rules, &__stats
+      position: absolute
+      top: 0
+      width: 100%
+      max-width: 250px
+      padding: toEm(20) toEm(30)
+      color: #fff
+      text-align: center
+      @include displayFlex(column, center, center)
+      gap: 30px
+      font-size: toRem(18)
+
+      @include media-query(1195px)
+        padding: toEm(20) toEm(18)
+        width: 200px
+
+      @include media-query(1080px)
+        position: relative
+        top: unset
+        width: 100%
+        max-width: unset
+        left: unset
+        right: unset
+        gap: 10px
+
+      &--title
+        font-style: italic
+        letter-spacing: toEm(-1)
+        font-family: "Baskervville SC", serif
+        font-weight: 400
+        font-size: toRem(38)
+
+    &__rules
+      left: 0
+
+      @include media-query(1080px)
+        padding-top: 0
+
+      &--list
+        list-style-type: none
+        @include displayFlex(column, center, center)
+        gap: 12px
+
+        @include media-query(1080px)
+          gap: 4px
+          font-style: italic
+
+    &__stats
+      right: 0
+
+      @include media-query(1080px)
+        @include displayFlex(row, center, flex-start)
+        gap: 40px
+
+      .sub
+        font-style: italic
+        line-height: toRem(30)
+        font-weight: 700
+
+      .message
+        font-style: italic
+
+      .old-score
+        text-decoration: line-through
+

@@ -1,0 +1,17 @@
+@keyframes move
+  from
+    transform: translateY(0) translateX(0)
+  to
+    transform: translateY(100vh) translateX(100vw)
+
+@keyframes shake
+  0%, 100%
+    transform: translateY(0)
+  50%
+    transform: translateY(-10px)
+
+@keyframes background-expand
+  0%
+    background: radial-gradient(circle, #ededed 0%, #dba8a8 100%)
+  100%
+    background: #63ebfd
