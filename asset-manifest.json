@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/dice-game/static/css/main.297e25c1.css",
-    "main.js": "/dice-game/static/js/main.03eea891.js",
-    "static/media/victory.mp3": "/dice-game/static/media/victory.62caf1a14167df585545.mp3",
-    "index.html": "/dice-game/index.html",
-    "main.297e25c1.css.map": "/dice-game/static/css/main.297e25c1.css.map",
-    "main.03eea891.js.map": "/dice-game/static/js/main.03eea891.js.map"
+    "main.css": "/dicefall/static/css/main.297e25c1.css",
+    "main.js": "/dicefall/static/js/main.ad243e8f.js",
+    "static/media/victory.mp3": "/dicefall/static/media/victory.62caf1a14167df585545.mp3",
+    "index.html": "/dicefall/index.html",
+    "main.297e25c1.css.map": "/dicefall/static/css/main.297e25c1.css.map",
+    "main.ad243e8f.js.map": "/dicefall/static/js/main.ad243e8f.js.map"
   },
   "entrypoints": [
     "static/css/main.297e25c1.css",
-    "static/js/main.03eea891.js"
+    "static/js/main.ad243e8f.js"
   ]
 }
