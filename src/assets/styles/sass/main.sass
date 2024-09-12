@@ -117,10 +117,31 @@ body
       letter-spacing: toEm(-1)
       font-family: "Baskervville SC", serif
       font-weight: 400
+      @include displayFlex(column, center, center)
+      gap: toRem(8)
 
       @include media-query(855px)
         font-size: toRem(48)
 
+      .lang-switch
+        background: none
+        outline: none
+        border: none
+        color: #fff
+        cursor: pointer
+        padding: toEm(10) toEm(20)
+        font-size: toRem(15)
+        border-radius: 5px
+
+        option
+          background: #000
+          color: #fff
+          cursor: pointer
+
+        
+
+
+      
     &__dices
       padding: 0 toEm(40)
       display: grid
@@ -281,6 +302,9 @@ body
         bottom: auto
         top: auto
         transform: unset
+
+    &__footer, &__roll-dices
+      @include media-query(1080px)
         @include displayFlex(row, center, center)
 
 
