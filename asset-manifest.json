@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/dicefall/static/css/main.297e25c1.css",
-    "main.js": "/dicefall/static/js/main.ad243e8f.js",
+    "main.css": "/dicefall/static/css/main.39524096.css",
+    "main.js": "/dicefall/static/js/main.0dec1229.js",
     "static/media/victory.mp3": "/dicefall/static/media/victory.62caf1a14167df585545.mp3",
     "index.html": "/dicefall/index.html",
-    "main.297e25c1.css.map": "/dicefall/static/css/main.297e25c1.css.map",
-    "main.ad243e8f.js.map": "/dicefall/static/js/main.ad243e8f.js.map"
+    "main.39524096.css.map": "/dicefall/static/css/main.39524096.css.map",
+    "main.0dec1229.js.map": "/dicefall/static/js/main.0dec1229.js.map"
   },
   "entrypoints": [
-    "static/css/main.297e25c1.css",
-    "static/js/main.ad243e8f.js"
+    "static/css/main.39524096.css",
+    "static/js/main.0dec1229.js"
   ]
 }
