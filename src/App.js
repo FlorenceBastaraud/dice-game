@@ -26,7 +26,9 @@ function App() {
   })
   const [rolling, setRolling] = useState(false)
   const [lang, setLang] = useState(() => {
-    return localStorage.getItem('currLang') || 'fr'
+    let browserLang = navigator.language || navigator.languages[0]
+    browserLang = browserLang.split('-')[0]
+    return localStorage.getItem('currLang') || browserLang || 'fr'
   })
 
   const handleLangSwitch = (e) => {
